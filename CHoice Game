@@ -1,0 +1,208 @@
+import random
+
+def introduction():
+    print("\nWelcome to the Choose Your Adventure game!")
+    print("In this game, your choices will determine the outcome of the story.")
+    print("Make decisions wisely!\n")
+
+
+def create_character():
+    name = input("Enter your character's name: ")
+    print(f"\n{random.choice(['Ah, brave', 'Welcome', 'Greetings'])} {name}! Your adventure begins now.\n")
+    return name
+
+
+def forest():
+    print("You find yourself in a dark and eerie forest. There are two paths ahead.")
+    choice = input("Do you choose to go left or right? (left/right): ").lower()
+
+    if choice == "left":
+        print("\nYou walk down the left path and encounter a wild bear!")
+        bear_encounter()
+    elif choice == "right":
+        print("\nYou decide to take the right path, where you find a peaceful clearing.")
+        peaceful_clearing()
+    else:
+        print("\nYou hesitate for too long and get lost in the forest.\nGame Over.")
+        game_over()
+
+def bear_encounter():
+    print("The bear roars angrily and stands on its hind legs!")
+    print("You need to act fast!")
+    choice = input("Do you fight the bear or run away? (fight/run): ").lower()
+
+    if choice == "fight":
+        print("\nYou bravely attempt to fight the bear.")
+        if random.random() > 0.5:
+            print("You defeat the bear and continue your journey.\n")
+            peaceful_clearing()
+        else:
+            print("The bear overpowers you. You are injured and faint.\nGame Over.")
+            game_over()
+    elif choice == "run":
+        print("\nYou run as fast as you can, escaping the bear.")
+        forest()
+    else:
+        print("\nYour indecision leads to a tragic fate. The bear catches you.\nGame Over.")
+        game_over()
+
+def peaceful_clearing():
+    print("\nYou rest in the clearing and hear a distant voice calling your name.")
+    print("Curious, you investigate and find a glowing crystal on the ground.")
+    choice = input("Do you pick up the crystal or leave it? (pick/leave): ").lower()
+
+    if choice == "pick":
+        print("\nYou pick up the crystal and feel a surge of energy.")
+        print("The energy heals your wounds and grants you newfound strength.")
+        cave()
+    elif choice == "leave":
+        print("\nYou decide to leave the crystal and explore further.")
+        forest()
+    else:
+        print("\nYou stand frozen, unsure of what to do. The voice fades away.")
+        game_over()
+
+
+def cave():
+    print("\nYou enter a dark cave. The air is cold and damp.")
+    print("Ahead, you see a flickering light.")
+    choice = input("Do you approach the light or turn back? (approach/turn): ").lower()
+
+    if choice == "approach":
+        print("\nYou cautiously approach the light and discover an ancient treasure chest!")
+        treasure_chest()
+    elif choice == "turn":
+        print("\nYou turn back and leave the cave, retracing your steps to the forest.")
+        forest()
+    else:
+        print("\nUnable to decide, you stand still and are lost in the cave forever.\nGame Over.")
+        game_over()
+
+def treasure_chest():
+    print("\nYou open the treasure chest and find gold, jewels, and a mysterious key.")
+    print("As you take the key, you hear a noise behind you!")
+    choice = input("Do you fight the unknown creature or try to escape? (fight/escape): ").lower()
+
+    if choice == "fight":
+        print("\nYou bravely fight the creature. With a mighty blow, you defeat it and claim the treasure.")
+        print("\nCongratulations, you are victorious!")
+        game_over(True)
+    elif choice == "escape":
+        print("\nYou attempt to escape, but the creature catches up and defeats you.")
+        game_over()
+    else:
+        print("\nIndecision leads to your downfall as the creature strikes.\nGame Over.")
+        game_over()
+
+
+def lake():
+    print("\nYou come across a serene lake with a small boat at the edge.")
+    print("On the other side, you see a distant village.")
+    choice = input("Do you take the boat across or explore the shoreline? (boat/shore): ").lower()
+
+    if choice == "boat":
+        print("\nYou row across the lake and reach the village.")
+        village()
+    elif choice == "shore":
+        print("\nYou explore the shoreline and find an ancient cave with strange symbols.")
+        cave_exploration()
+    else:
+        print("\nYou stand still, unsure of what to do, and eventually fall into the lake.\nGame Over.")
+        game_over()
+
+
+def village():
+    print("\nYou arrive at a small village. The villagers are kind and offer you food and shelter.")
+    print("The village elder tells you of an ancient temple hidden nearby.")
+    choice = input("Do you visit the temple or stay in the village? (temple/stay): ").lower()
+
+    if choice == "temple":
+        temple()
+    elif choice == "stay":
+        print("\nYou decide to stay in the village and live a peaceful life.")
+        game_over(True)
+    else:
+        print("\nIndecision leaves you stranded in the village. The day ends and night falls.\nGame Over.")
+        game_over()
+
+
+def temple():
+    print("\nYou find the hidden temple, its entrance guarded by a massive stone door.")
+    print("There are three levers in front of you, each with a symbol.")
+    choice = input("Do you pull the lever with the sun symbol, moon symbol, or star symbol? (sun/moon/star): ").lower()
+
+    if choice == "sun":
+        print("\nThe door creaks open as the sun lever is pulled. Inside, you find riches beyond your imagination!")
+        print("\nCongratulations, you have uncovered the temple's treasures!")
+        game_over(True)
+    elif choice == "moon":
+        print("\nThe door opens slightly, but then you hear a loud noise, and the temple begins to collapse!")
+        print("You narrowly escape, but your adventure ends here.\nGame Over.")
+        game_over()
+    elif choice == "star":
+        print("\nThe temple door does not budge, and strange sounds fill the air. It's a trap!")
+        game_over()
+    else:
+        print("\nYou stand indecisive, and the temple door slams shut.\nGame Over.")
+        game_over()
+
+
+def cave_exploration():
+    print("\nYou enter the cave and see glowing crystals along the walls.")
+    print("As you walk deeper, you find a strange, ancient door sealed with magical runes.")
+    choice = input("Do you try to open the door or leave the cave? (open/leave): ").lower()
+
+    if choice == "open":
+        print("\nThe runes glow brighter as you touch the door, and it slowly creaks open.")
+        print("Inside, you find an enchanted sword!")
+        print("You have gained a powerful weapon for your journey.")
+        cave_entrance()
+    elif choice == "leave":
+        print("\nYou decide to leave the cave and return to the village.")
+        village()
+    else:
+        print("\nYour hesitation leads to disaster as the cave begins to collapse.\nGame Over.")
+        game_over()
+
+
+def cave_entrance():
+    print("\nYou step into a grand chamber filled with treasure and an ancient dragon!")
+    print("The dragon awakens and stares at you.")
+    choice = input("Do you fight the dragon or try to negotiate? (fight/negotiation): ").lower()
+
+    if choice == "fight":
+        print("\nYou fight the dragon bravely, but the odds are against you.")
+        print("The dragon defeats you, and you lose everything.\nGame Over.")
+        game_over()
+    elif choice == "negotiation":
+        print("\nYou manage to speak with the dragon and convince it to let you go.")
+        print("It even gives you a magical stone as a gift!")
+        print("\nCongratulations, you have befriended the dragon and survived!")
+        game_over(True)
+    else:
+        print("\nIndecision causes your doom as the dragon attacks.\nGame Over.")
+        game_over()
+
+def game_over(victory=False):
+    if victory:
+        print("\nYou've completed the adventure successfully! Well done!")
+    else:
+        print("\nGame Over. Better luck next time.")
+    restart_game()
+
+
+def restart_game():
+    choice = input("\nWould you like to play again? (yes/no): ").lower()
+    if choice == "yes":
+        start_game()
+    else:
+        print("\nThanks for playing! Goodbye.")
+
+
+def start_game():
+    introduction()
+    name = create_character()
+    forest()
+
+
+start_game()
